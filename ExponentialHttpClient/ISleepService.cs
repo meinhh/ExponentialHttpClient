@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace ExponentialHttpClient
 {
-    public interface ISleepService
+    internal interface ISleepService
     {
         Task Sleep(int sleepTimeInMilliseconds);
     }
