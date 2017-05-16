@@ -1,6 +1,6 @@
 using System;
 
-namespace ExponentialHttpClient
+namespace ExponentialHttpClient.Exceptions
 {
     [Serializable]
     internal class ClientShouldRetryException : Exception

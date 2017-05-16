@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using ExponentialHttpClient.Exceptions;
 
 namespace ExponentialHttpClient
 {
@@ -65,7 +66,7 @@ namespace ExponentialHttpClient
                 timesRetried++;
             }
 
-            throw new HttpRequestException(url, new Exception($"Http request failed { timesRetried + 1 } times."));
+            throw new HttpRequestFailedException(url, new Exception($"Http request failed { timesRetried + 1 } times."));
         }
 
         private async Task SleepBeforeNextRetry(int timesRetried, string url)
@@ -90,7 +91,7 @@ namespace ExponentialHttpClient
                 if (_retryStrategy.ShouldRetryOnException(ex))
                     throw new ClientShouldRetryException(url, ex);
 
-                throw new HttpRequestException(url, ex);
+                throw new HttpRequestFailedException(url, ex);
             }
         }
 
