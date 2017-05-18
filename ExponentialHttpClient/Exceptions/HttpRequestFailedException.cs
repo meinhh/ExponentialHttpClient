@@ -3,17 +3,13 @@ using System;
 namespace ExponentialHttpClient.Exceptions
 {
     [Serializable]
-    internal class HttpRequestFailedException : Exception
+    public class HttpRequestFailedException : Exception
     {
-        public HttpRequestFailedException()
+        public HttpRequestFailedException(string url) : base($"Http request failed. url: {url}")
         {
         }
 
-        public HttpRequestFailedException(string message) : base(message)
-        {
-        }
-
-        public HttpRequestFailedException(string message, Exception innerException) : base(message, innerException)
+        public HttpRequestFailedException(string url, Exception ex) : base($"Http request failed. url: {url}", ex)
         {
         }
     }
