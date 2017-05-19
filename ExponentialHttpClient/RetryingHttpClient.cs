@@ -7,17 +7,17 @@ using ExponentialHttpClient.Exceptions;
 
 namespace ExponentialHttpClient
 {
-    public class ExponentialHttpClient : IExponentialHttpClient
+    public class RetryingHttpClient : IRetryingHttpClient
     {
         private readonly HttpClient _client;
         private readonly ISleepService _sleepService;
         private readonly IHttpRequestRetryStrayegy _retryStrategy;
 
-        public ExponentialHttpClient()
+        public RetryingHttpClient()
             : this(new HttpClient(), new SleepService(), new HttpRequestRetryStrayegy())
         { }
 
-        internal ExponentialHttpClient(HttpClient client, ISleepService sleepService, IHttpRequestRetryStrayegy retryStrategy)
+        internal RetryingHttpClient(HttpClient client, ISleepService sleepService, IHttpRequestRetryStrayegy retryStrategy)
         {
             _client = client;
             _sleepService = sleepService;

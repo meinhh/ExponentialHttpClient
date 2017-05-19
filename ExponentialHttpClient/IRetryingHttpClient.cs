@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace ExponentialHttpClient
 {
-    public interface IExponentialHttpClient
+    public interface IRetryingHttpClient
     {
         Task<TDestinationType> PostAsJson<TSourceType, TDestinationType>(string url, TSourceType data);
 
